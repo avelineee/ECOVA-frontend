@@ -1,26 +1,2425 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+/* =========================================================
+   ECOVA NAVBAR
+   ========================================================= */
+
+.ecova-nav-item {
+  border-radius: 9999px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  background: transparent;
+  transition: 0.2s ease;
+}
+
+/* HOME ACTIVE SECARA DEFAULT */
+.ecova-home-item {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* Jika ada section :target, Home kembali normal */
+body:has(:target) .ecova-home-item {
+  background: transparent;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+/* HOME */
+body:has(#home:target)
+  .ecova-nav-item[href="#home"] {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* ABOUT */
+body:has(#about:target)
+  .ecova-nav-item[href="#about"] {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* OUR IMPACT */
+body:has(#impact:target)
+  .ecova-nav-item[href="#impact"] {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* HOW IT WORKS */
+body:has(#how-it-works:target)
+  .ecova-nav-item[href="#how-it-works"] {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* CATEGORIES */
+body:has(#categories:target)
+  .ecova-nav-item[href="#categories"] {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* REWARDS */
+body:has(#rewards:target)
+  .ecova-nav-item[href="#rewards"] {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* =========================================================
+   MOBILE NAVBAR
+   ========================================================= */
+
+.ecova-mobile-nav-item {
+  width: 100%;
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+  background: transparent;
+}
+
+.ecova-mobile-home-item {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+body:has(:target) .ecova-mobile-home-item {
+  background: transparent;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+body:has(#home:target)
+  .ecova-mobile-nav-item[href="#home"],
+body:has(#about:target)
+  .ecova-mobile-nav-item[href="#about"],
+  body:has(#impact:target)
+  .ecova-mobile-nav-item[href="#impact"],
+body:has(#how-it-works:target)
+  .ecova-mobile-nav-item[href="#how-it-works"],
+body:has(#categories:target)
+  .ecova-mobile-nav-item[href="#categories"],
+body:has(#rewards:target)
+  .ecova-mobile-nav-item[href="#rewards"] {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* =========================================================
+   PRINT DEFAULT
+   ========================================================= */
+
+.print-only {
+  display: none;
+}
+
+/* =========================================================
+   ECOVA PRINT
+   ========================================================= */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm 12mm;
+  }
+
+  html,
+  body {
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff !important;
+  }
+
+  #admin-rekap-page {
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff !important;
+  }
+
+  /* =======================================================
+     SEMBUNYIKAN DASHBOARD SAAT PRINT
+     ======================================================= */
+
+  body[data-print-mode="rekap"] .rekap-screen-only,
+  body[data-print-mode="nota"] .rekap-screen-only {
+    display: none !important;
+  }
+
+  /* =======================================================
+     PRINT REKAP
+     ======================================================= */
+
+  body[data-print-mode="rekap"] #print-nota {
+    display: none !important;
+  }
+
+  body[data-print-mode="rekap"] #print-rekap {
+    display: block !important;
+
+    position: static !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff !important;
+    color: #000000 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* =======================================================
+     HEADER REKAP
+     ======================================================= */
+
+  .rekap-print-header {
+    position: relative !important;
+
+    width: 100% !important;
+    min-height: 17mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+
+  /* =======================================================
+     LOGO ECOVA - KANAN ATAS
+     ======================================================= */
+
+  /* LOGO ECOVA - KANAN ATAS */
+.rekap-print-logo {
+  position: absolute !important;
+
+  top: 0 !important;
+  right: 0 !important;
+
+  width: 30mm !important;
+  height: 10mm !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+
+  overflow: visible !important;
+}
+
+.rekap-print-logo img {
+  display: block !important;
+
+  width: 30mm !important;
+  height: auto !important;
+  max-height: 10mm !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  object-fit: contain !important;
+  object-position: top right !important;
+}
+
+  /* =======================================================
+   JUDUL REKAP
+   ======================================================= */
+
+.rekap-print-header {
+  position: relative !important;
+
+  width: 100% !important;
+  min-height: 16mm !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+}
+
+.rekap-print-title {
+  width: 100% !important;
+
+  margin: 0 !important;
+  padding-top: 7mm !important;
+
+  text-align: center !important;
+}
+
+/* JUDUL: REKAPITULASI BULANAN */
+.rekap-print-title h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-size: 15px !important; /* ← BESAR JUDUL */
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+}
+
+/* PERIODE: SEPTEMBER 2026 */
+.rekap-period-title {
+  margin: 2px 0 0 !important;
+  padding: 0 !important;
+
+  font-size: 11px !important; /* ← BESAR BULAN */
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+  /* =======================================================
+     GARIS
+     ======================================================= */
+
+  .rekap-double-line {
+    width: 100% !important;
+    height: 3px !important;
+
+    margin: 6px 0 !important;
+
+    border-top: 2px solid #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+  }
+
+  .rekap-line {
+    width: 100% !important;
+
+    margin: 2px 0 5px !important;
+
+    border-top: 1px solid #000000 !important;
+  }
+
+  .rekap-section-gap {
+    margin-top: 8px !important;
+  }
+
+  /* =======================================================
+     PERIODE
+     ======================================================= */
+
+  .rekap-info-row {
+    display: grid !important;
+    grid-template-columns: 42mm 1fr !important;
+
+    gap: 4mm !important;
+
+    margin: 6px 0 8px !important;
+  }
+
+  /* =======================================================
+     RINGKASAN
+     ======================================================= */
+
+  .rekap-section-title {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+  }
+
+  .rekap-summary {
+    padding: 0 !important;
+  }
+
+  .rekap-summary > div {
+    display: grid !important;
+    grid-template-columns: 42mm 1fr !important;
+
+    gap: 4mm !important;
+
+    margin: 2px 0 !important;
+
+    font-size: 9px !important;
+  }
+
+  /* =======================================================
+     TABEL REKAP
+     ======================================================= */
+
+  .rekap-print-table {
+    width: 100% !important;
+
+    margin-top: 3px !important;
+
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+
+    font-size: 8px !important;
+  }
+
+  .rekap-print-table thead {
+    display: table-header-group !important;
+  }
+
+  .rekap-print-table th {
+    padding: 3px 5px !important;
+
+    border-bottom: 1px solid #000000 !important;
+
+    text-align: left !important;
+    font-weight: 700 !important;
+  }
+
+  .rekap-print-table td {
+    padding: 2px 5px !important;
+
+    border-bottom: 1px solid #e5e7eb !important;
+
+    vertical-align: middle !important;
+  }
+
+  /* NO */
+  .rekap-print-table th:nth-child(1),
+  .rekap-print-table td:nth-child(1) {
+    width: 8% !important;
+  }
+
+  /* TANGGAL */
+  .rekap-print-table th:nth-child(2),
+  .rekap-print-table td:nth-child(2) {
+    width: 20% !important;
+  }
+
+  /* NASABAH */
+  .rekap-print-table th:nth-child(3),
+  .rekap-print-table td:nth-child(3) {
+    width: 32% !important;
+  }
+
+  /* BERAT */
+  .rekap-print-table th:nth-child(4),
+  .rekap-print-table td:nth-child(4) {
+    width: 20% !important;
+  }
+
+  /* POIN */
+  .rekap-print-table th:nth-child(5),
+  .rekap-print-table td:nth-child(5) {
+    width: 20% !important;
+  }
+
+  .rekap-print-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .rekap-print-table tfoot td {
+    padding-top: 4px !important;
+
+    border-top: 1px solid #000000 !important;
+    border-bottom: none !important;
+
+    font-weight: 700 !important;
+  }
+
+  /* =======================================================
+     FOOTER REKAP
+     ======================================================= */
+
+  .rekap-bottom-line {
+    margin-top: 8px !important;
+  }
+
+  .rekap-print-footer {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+
+    margin-top: 8px !important;
+
+    font-size: 8px !important;
+  }
+
+  .rekap-print-footer p {
+    margin: 0 0 2px !important;
+  }
+
+  .rekap-admin-sign {
+    min-width: 45mm !important;
+    text-align: center !important;
+  }
+
+  .rekap-admin-sign strong {
+    display: block !important;
+
+    margin-top: 12px !important;
+  }
+
+  /* =======================================================
+     PRINT NOTA
+     ======================================================= */
+
+  body[data-print-mode="nota"] #print-rekap {
+    display: none !important;
+  }
+
+  body[data-print-mode="nota"] #print-nota {
+    display: block !important;
+
+    position: static !important;
+
+    width: 145mm !important;
+    max-width: 145mm !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    background: #ffffff !important;
+    color: #000000 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* =======================================================
+     TABEL NOTA
+     ======================================================= */
+
+  .print-table {
+    width: 100% !important;
+
+    margin: 8px 0 !important;
+
+    border-collapse: collapse !important;
+    table-layout: auto !important;
+  }
+
+  .print-table thead {
+    display: table-header-group !important;
+  }
+
+  .print-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-table th,
+  .print-table td {
+    padding: 5px 4px !important;
+
+    border-bottom: 1px solid #d1d5db !important;
+
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+
+    color: #000000 !important;
+  }
+
+  .print-table th {
+    font-weight: 700 !important;
+  }
+
+  /* =======================================================
+     JANGAN PRINT TOMBOL
+     ======================================================= */
+
+  button,
+  .no-print {
+    display: none !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+/* =========================================================
+   FIX PRINT NOTA PENUKARAN
+   HARUS PALING BAWAH globals.css
+   ========================================================= */
+
+@media screen {
+  #print-nota-penukaran {
+    display: none !important;
+  }
+}
+
+@media print {
+  body[data-print-mode="nota-penukaran"] .penukaran-screen-only {
+    display: none !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] #print-nota-penukaran {
+    display: block !important;
+    position: static !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: white !important;
+    color: black !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] #admin-penukaran-page {
+    min-height: 0 !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: white !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-header {
+    position: relative !important;
+
+    width: 100% !important;
+    min-height: 16mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-logo {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+
+    width: 30mm !important;
+    height: 10mm !important;
+
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-end !important;
+
+    overflow: visible !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-logo img {
+    display: block !important;
+
+    width: 30mm !important;
+    height: auto !important;
+    max-height: 10mm !important;
+
+    object-fit: contain !important;
+    object-position: top right !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-title {
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding-top: 7mm !important;
+
+    text-align: center !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-title h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+
+    color: black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-double-line {
+    width: 100% !important;
+    height: 3px !important;
+
+    margin: 7px 0 !important;
+
+    border-top: 2px solid black !important;
+    border-bottom: 1px solid black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-info {
+    margin-top: 7px !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-info > div {
+    display: grid !important;
+    grid-template-columns: 42mm 1fr !important;
+    gap: 4mm !important;
+
+    margin: 4px 0 !important;
+
+    font-size: 9px !important;
+    color: black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-info span {
+    color: black !important;
+    font-weight: 400 !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-info strong {
+    color: black !important;
+    font-weight: 600 !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-section {
+    margin-top: 12px !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-section h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+
+    color: black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-line {
+    width: 100% !important;
+
+    margin: 3px 0 6px !important;
+
+    border-top: 1px solid black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-bottom-line {
+    margin-top: 12px !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-footer {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+
+    margin-top: 8px !important;
+
+    font-size: 8px !important;
+    color: black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-footer p {
+    margin: 0 0 2px !important;
+    color: black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-footer strong {
+    color: black !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-admin {
+    min-width: 45mm !important;
+    text-align: center !important;
+  }
+
+  body[data-print-mode="nota-penukaran"] .ecova-print-admin strong {
+    display: block !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* =========================================================
+   ECOVA - NOTA SETORAN (ADMIN SETORAN)
+   ========================================================= */
+
+@media screen {
+  #print-nota-setoran {
+    display: none !important;
+  }
+}
+
+@media print {
+  body[data-print-mode="nota-setoran"] .setoran-screen-only {
+    display: none !important;
+  }
+
+  body[data-print-mode="nota-setoran"] #admin-setoran-page {
+    width: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  body[data-print-mode="nota-setoran"] #print-nota-setoran {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-header {
+    position: relative !important;
+    width: 100% !important;
+    min-height: 16mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-logo {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 30mm !important;
+    height: 10mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-end !important;
+    overflow: visible !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-logo img {
+    display: block !important;
+    width: 30mm !important;
+    max-width: 30mm !important;
+    height: auto !important;
+    max-height: 10mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    object-fit: contain !important;
+    object-position: top right !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-title {
+    width: 100% !important;
+    margin: 0 !important;
+    padding-top: 7mm !important;
+    text-align: center !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-title h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #000000 !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-double-line {
+    width: 100% !important;
+    height: 3px !important;
+    margin: 7px 0 !important;
+    border-top: 2px solid #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-info {
+    margin-top: 7px !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-info > div,
+  body[data-print-mode="nota-setoran"] .nota-setoran-summary > div {
+    display: grid !important;
+    grid-template-columns: 42mm 1fr !important;
+    gap: 4mm !important;
+    margin: 4px 0 !important;
+    color: #000000 !important;
+    font-size: 9px !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-info span,
+  body[data-print-mode="nota-setoran"] .nota-setoran-summary span {
+    color: #000000 !important;
+    font-weight: 400 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-info strong,
+  body[data-print-mode="nota-setoran"] .nota-setoran-summary strong {
+    color: #000000 !important;
+    font-weight: 600 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-section {
+    margin-top: 12px !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-section h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #000000 !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-line {
+    width: 100% !important;
+    margin: 3px 0 5px !important;
+    border-top: 1px solid #000000 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    color: #000000 !important;
+    font-size: 8.5px !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-table th,
+  body[data-print-mode="nota-setoran"] .nota-setoran-table td {
+    padding: 4px 5px !important;
+    border-bottom: 1px solid #d1d5db !important;
+    color: #000000 !important;
+    text-align: left !important;
+    vertical-align: top !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-table th {
+    border-bottom: 1px solid #000000 !important;
+    font-weight: 700 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-table th:nth-child(1),
+  body[data-print-mode="nota-setoran"] .nota-setoran-table td:nth-child(1) {
+    width: 43% !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-table th:nth-child(2),
+  body[data-print-mode="nota-setoran"] .nota-setoran-table td:nth-child(2) {
+    width: 18% !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-table th:nth-child(3),
+  body[data-print-mode="nota-setoran"] .nota-setoran-table td:nth-child(3) {
+    width: 17% !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-table th:nth-child(4),
+  body[data-print-mode="nota-setoran"] .nota-setoran-table td:nth-child(4) {
+    width: 22% !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-summary {
+    margin-top: 9px !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-bottom-line {
+    margin-top: 12px !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-footer {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    margin-top: 8px !important;
+    color: #000000 !important;
+    font-size: 8px !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-footer p {
+    margin: 0 0 2px !important;
+    color: #000000 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-footer strong {
+    color: #000000 !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-admin {
+    min-width: 45mm !important;
+    text-align: center !important;
+  }
+
+  body[data-print-mode="nota-setoran"] .nota-setoran-admin strong {
+    display: block !important;
+    margin-top: 12px !important;
+  }
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  --destructive-foreground: var(--color-red-700);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  --destructive-foreground: var(--color-red-400);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* =========================================================
+   ECOVA - PRINT NOTA SETORAN & REKAP BULANAN NASABAH
+   Tempelkan di PALING BAWAH app/globals.css
+   ========================================================= */
+
+/* Area cetak sama sekali tidak mengambil ruang di halaman normal. */
+#print-area {
+  display: none;
+}
+
+/* Elemen cetak dasar */
+.ecova-print-sheet {
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #1f2937;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.ecova-print-header {
+  position: relative;
+  min-height: 66px;
+  border-bottom: 2px solid #166534;
+}
+
+.ecova-print-title {
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.ecova-print-title h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.ecova-print-title p {
+  margin: 4px 0 0;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.ecova-print-logo {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  width: 92px;
+  height: auto;
+  object-fit: contain;
+}
+
+.ecova-print-info {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ecova-print-info-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ecova-print-info-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ecova-print-info-box {
+  min-width: 0;
+  border: 1px solid #dcefe2;
+  border-radius: 8px;
+  background: #f7fcf8;
+  padding: 8px 10px;
+}
+
+.ecova-print-info-box span {
+  display: block;
+  color: #64748b;
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+.ecova-print-info-box strong {
+  display: block;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+  color: #1f2937;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.ecova-print-table {
+  width: 100%;
+  margin-top: 14px;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 10px;
+}
+
+.ecova-print-table thead tr {
+  border-top: 1px solid #dcefe2;
+  border-bottom: 1px solid #dcefe2;
+  background: #f0fdf4;
+}
+
+.ecova-print-table th {
+  padding: 7px 8px;
+  color: #334155;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.ecova-print-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ecova-print-table td {
+  padding: 7px 8px;
+  vertical-align: middle;
+}
+
+.ecova-print-table td small {
+  display: block;
+  margin-top: 2px;
+  color: #64748b;
+  font-size: 8px;
+  text-transform: capitalize;
+}
+
+.ecova-print-table tfoot tr {
+  background: #f7fcf8;
+}
+
+.ecova-print-table tfoot td {
+  padding: 8px;
+}
+
+.ecova-align-right {
+  text-align: right !important;
+}
+
+.ecova-green {
+  color: #166534 !important;
+}
+
+.ecova-print-total {
+  width: 270px;
+  margin-top: 14px;
+  margin-left: auto;
+  border: 1px solid #dcefe2;
+  border-radius: 8px;
+  background: #f7fcf8;
+  padding: 9px 11px;
+}
+
+.ecova-print-total > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 10px;
+}
+
+.ecova-print-total > div + div {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid #dcefe2;
+}
+
+.ecova-print-pickup {
+  margin-top: 12px;
+  border: 1px solid #dcefe2;
+  border-radius: 8px;
+  background: #f7fcf8;
+  padding: 9px 11px;
+  font-size: 9px;
+}
+
+.ecova-print-pickup-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 12px;
+  margin-top: 7px;
+}
+
+.ecova-print-pickup span {
+  color: #64748b;
+  font-size: 8px;
+}
+
+.ecova-print-pickup p {
+  margin: 2px 0 0;
+  line-height: 1.35;
+}
+
+.ecova-print-footer {
+  margin-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 9px;
+  color: #64748b;
+  font-size: 8px;
+  text-align: center;
+}
+
+/* ========================= PRINT ========================= */
+@media print {
+  /*
+    Browser header/footer seperti:
+    tanggal, judul halaman, URL, nomor halaman
+    adalah setting browser. @page margin: 0 membuat dokumen memakai
+    area penuh; di Chrome tetap pastikan "Headers and footers" OFF
+    jika browser memaksanya.
+  */
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  /*
+    Jangan pakai body > * {display:none}, karena Next.js punya wrapper
+    runtime yang berbeda-beda dan bisa membuat print-area ikut hilang.
+    Kita sembunyikan semua isi main selain print-area.
+  */
+  main > *:not(#print-area) {
+    display: none !important;
+  }
+
+  main {
+    display: block !important;
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  #print-area {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  .ecova-print-sheet {
+    display: block !important;
+    box-sizing: border-box !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 10mm 12mm 8mm !important;
+    overflow: hidden !important;
+    break-after: avoid-page !important;
+    break-before: avoid-page !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+  }
+
+  .ecova-print-header,
+  .ecova-print-info,
+  .ecova-print-total,
+  .ecova-print-pickup,
+  .ecova-print-footer,
+  .ecova-print-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Rekap bulanan dibuat lebih rapat supaya satu halaman A4. */
+  .ecova-print-monthly .ecova-print-header {
+    min-height: 60px;
+  }
+
+  .ecova-print-monthly .ecova-print-title {
+    padding-top: 17px;
+  }
+
+  .ecova-print-monthly .ecova-print-info {
+    margin-top: 12px;
+  }
+
+  .ecova-print-monthly .ecova-print-table {
+    margin-top: 12px;
+    font-size: 9px;
+  }
+
+  .ecova-print-monthly .ecova-print-table th,
+  .ecova-print-monthly .ecova-print-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .ecova-print-monthly .ecova-print-footer {
+    margin-top: 12px;
+    padding-top: 7px;
+  }
+
+  /* Nota satu transaksi juga dipadatkan agar tidak pecah halaman. */
+  .ecova-print-nota .ecova-print-table th,
+  .ecova-print-nota .ecova-print-table td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* =========================================================
+   ECOVA - NASABAH SETOR SAMPAH
+   METODE SETOR
+   ========================================================= */
+
+.setor-method-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.setor-method-card {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    background: #ffffff;
+    text-align: left;
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.setor-method-card:hover {
+    border-color: #86efac;
+}
+
+.setor-method-card-active {
+    border-color: #22c55e;
+    background: #f0fdf4;
+}
+
+.setor-method-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.setor-method-icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.setor-method-icon-antar {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.setor-method-icon-jemput {
+    background: #ecfdf5;
+    color: #0f766e;
+}
+
+.setor-method-radio {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 9999px;
+
+    background: #ffffff;
+}
+
+.setor-method-radio-active {
+    border-color: #16a34a;
+}
+
+.setor-method-radio-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: #16a34a;
+}
+
+.setor-method-title {
+    margin-top: 16px;
+    color: #1f2937;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.setor-method-description {
+    margin-top: 4px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@media (max-width: 639px) {
+    .setor-method-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .setor-method-card {
+        padding: 18px;
+    }
+}
+
+/* =========================================================
+   ECOVA - NASABAH PAGE CONTAINER
+   Samakan jarak kanan-kiri seluruh halaman nasabah
+   ========================================================= */
+
+.nasabah-page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .nasabah-page-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nasabah-page-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* =========================================================
+   ECOVA - PRINT PENUKARAN NASABAH
+   ========================================================= */
+
+.ecova-print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* SEMBUNYIKAN SEMUA CHILD LANGSUNG DARI MAIN */
+  main > * {
+    display: none !important;
+  }
+
+  /* TAMPILKAN AREA NOTA */
+  main > .ecova-print-only {
+    display: block !important;
+  }
+
+  .ecova-print-only {
+    width: 100% !important;
+    background: white !important;
+  }
+
+  .ecova-print-sheet {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    color: #1f2937;
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ================= HEADER ================= */
+
+  .ecova-print-header {
+    position: relative;
+    display: flex;
+    min-height: 50px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .ecova-print-title {
+    width: 100%;
+    padding: 4px 110px 0;
+    text-align: center;
+  }
+
+  .ecova-print-title h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+  }
+
+  .ecova-print-title p {
+    margin: 4px 0 0;
+    color: #475569;
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .ecova-print-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 82px;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  .ecova-print-line {
+    height: 2px;
+    margin: 8px 0 14px;
+    background: #15803d;
+  }
+
+  /* ================= INFO ================= */
+
+  .ecova-print-meta {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .ecova-print-meta-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ecova-print-meta > div {
+    min-height: 48px;
+    padding: 9px 10px;
+
+    border: 1px solid #d8eee0;
+    border-radius: 7px;
+
+    background: #fbfefc;
+  }
+
+  .ecova-print-meta span,
+  .ecova-print-product-info span,
+  .ecova-print-status span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #64748b;
+    font-size: 8px;
+  }
+
+  .ecova-print-meta strong {
+    color: #111827;
+    font-size: 10px;
+  }
+
+  /* ================= HADIAH ================= */
+
+  .ecova-print-product {
+    display: grid;
+
+    grid-template-columns:
+      60px
+      minmax(0, 1fr)
+      100px;
+
+    gap: 12px;
+
+    align-items: center;
+
+    padding: 11px;
+
+    border: 1px solid #d8eee0;
+    border-radius: 8px;
+
+    background: #f7fcf8;
+  }
+
+  .ecova-print-product-image {
+    display: flex;
+
+    width: 60px;
+    height: 60px;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 7px;
+
+    background: white;
+
+    color: #15803d;
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .ecova-print-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ecova-print-product-info strong,
+  .ecova-print-status strong {
+    display: block;
+
+    color: #111827;
+    font-size: 11px;
+  }
+
+  .ecova-print-product-info p {
+    margin: 5px 0 0;
+
+    color: #15803d;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* ================= TOTAL ================= */
+
+  .ecova-print-total-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 12px;
+    padding: 10px 12px;
+
+    border-top: 1px solid #d8eee0;
+    border-bottom: 1px solid #d8eee0;
+
+    color: #111827;
+  }
+
+  .ecova-print-total-row strong {
+    color: #15803d;
+  }
+
+  /* ================= TABLE REKAP ================= */
+
+  .ecova-print-table {
+    width: 100%;
+
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .ecova-print-table th,
+  .ecova-print-table td {
+    padding: 7px 6px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    text-align: left;
+    vertical-align: top;
+
+    font-size: 8px;
+
+    word-break: break-word;
+  }
+
+  .ecova-print-table th {
+    color: #475569;
+    font-weight: 700;
+
+    background: #f7fcf8;
+  }
+
+  .ecova-print-table th:nth-child(1),
+  .ecova-print-table td:nth-child(1) {
+    width: 8%;
+  }
+
+  .ecova-print-table th:nth-child(2),
+  .ecova-print-table td:nth-child(2) {
+    width: 23%;
+  }
+
+  .ecova-print-table th:nth-child(3),
+  .ecova-print-table td:nth-child(3) {
+    width: 34%;
+  }
+
+  .ecova-print-table th:nth-child(4),
+  .ecova-print-table td:nth-child(4) {
+    width: 18%;
+  }
+
+  .ecova-print-table th:nth-child(5),
+  .ecova-print-table td:nth-child(5) {
+    width: 17%;
+  }
+
+  .ecova-print-table tfoot td {
+    border-top: 2px solid #15803d;
+    border-bottom: none;
+
+    color: #111827;
+    font-weight: 800;
+  }
+
+  .ecova-print-right {
+    text-align: right !important;
+  }
+
+  /* ================= FOOTER NOTA ================= */
+
+  .ecova-print-note {
+    margin: 15px 0 0;
+
+    color: #64748b;
+
+    text-align: center;
+
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   ECOVA LOGIN ANIMATION
+========================================================= */
+
+@keyframes ecovaLoginCover {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ecovaLoginForm {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ecovaLoginPanel {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* LEFT IMAGE */
+
+.login-cover-image {
+  animation: ecovaLoginCover 900ms
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+
+/* RIGHT WHITE AREA */
+
+.login-form-panel {
+  animation: ecovaLoginPanel 500ms ease-out both;
+}
+
+
+/* FORM ITEMS */
+
+.login-animate {
+  opacity: 0;
+
+  animation: ecovaLoginForm 650ms
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+
+/* STAGGER */
+
+.login-delay-1 {
+  animation-delay: 120ms;
+}
+
+.login-delay-2 {
+  animation-delay: 220ms;
+}
+
+.login-delay-3 {
+  animation-delay: 320ms;
+}
+
+.login-delay-4 {
+  animation-delay: 400ms;
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .login-cover-image,
+  .login-form-panel,
+  .login-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* =========================================================
+   ECOVA REGISTER PAGE ANIMATION
+========================================================= */
+
+@keyframes ecovaRegisterPage {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ecovaRegisterCover {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ecovaRegisterPanel {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ecovaRegisterItem {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* WHOLE CARD */
+
+.register-page-card {
+  animation:
+    ecovaRegisterPage 550ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+
+/* COVER */
+
+.register-cover-image {
+  animation:
+    ecovaRegisterCover 950ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+
+/* RIGHT PANEL */
+
+.register-form-panel {
+  animation:
+    ecovaRegisterPanel 450ms
+    ease-out
+    both;
+}
+
+
+/* FORM CONTENT */
+
+.register-animate {
+  opacity: 0;
+
+  animation:
+    ecovaRegisterItem 600ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+.register-delay-1 {
+  animation-delay: 100ms;
+}
+
+.register-delay-2 {
+  animation-delay: 190ms;
+}
+
+.register-delay-3 {
+  animation-delay: 280ms;
+}
+
+.register-delay-4 {
+  animation-delay: 350ms;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .register-page-card,
+  .register-cover-image,
+  .register-form-panel,
+  .register-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* =========================================================
+   ECOVA FOOTER
+========================================================= */
+
+.ecova-footer {
+  width: 100%;
+  background-color: #14532d;
+  color: #ffffff;
+}
+
+.ecova-footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 32px 28px;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.ecova-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.7fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.ecova-footer-brand {
+  min-width: 0;
+}
+
+.ecova-footer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.ecova-footer-logo {
+  display: block;
+  width: 155px;
+  height: auto;
+
+  /* bikin logo putih di footer */
+  filter: brightness(0) invert(1);
+}
+
+.ecova-footer-description {
+  max-width: 310px;
+  margin: 20px 0 0;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.ecova-footer-tagline {
+  margin: 18px 0 0;
+
+  color: #4ade80;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   COLUMN TITLE
+========================================================= */
+
+.ecova-footer-title {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.ecova-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 11px;
+
+  margin-top: 20px;
+}
+
+.ecova-footer-link {
+  display: inline-block;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.ecova-footer-link:hover {
+  color: #4ade80;
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   CONNECT WITH US
+========================================================= */
+
+.ecova-footer-connect-description {
+  max-width: 260px;
+  margin: 20px 0 0;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   SOCIAL MEDIA
+========================================================= */
+
+.ecova-footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 20px;
+}
+
+.ecova-footer-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 11px;
+
+  background-color: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.78);
+
+  text-decoration: none;
+
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.ecova-footer-social:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+
+  border-color: rgba(134, 239, 172, 0.5);
+
+  color: #86efac;
+
+  transform: translateY(-2px);
+}
+
+.ecova-footer-social svg {
+  display: block;
+
+  transition: transform 180ms ease;
+}
+
+.ecova-footer-social:hover svg {
+  transform: scale(1.06);
+}
+
+.ecova-footer-x {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   BOTTOM FOOTER
+========================================================= */
+
+.ecova-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-top: 48px;
+  padding-top: 23px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.ecova-footer-bottom p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .ecova-footer-container {
+    padding: 56px 24px 28px;
+  }
+
+  .ecova-footer-grid {
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 42px 48px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .ecova-footer-container {
+    padding: 46px 20px 24px;
+  }
+
+  .ecova-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .ecova-footer-description,
+  .ecova-footer-connect-description {
+    max-width: 100%;
+  }
+
+  .ecova-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 7px;
+
+    margin-top: 40px;
+    padding-top: 20px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ecova-footer-link,
+  .ecova-footer-social,
+  .ecova-footer-social svg {
+    transition: none;
+  }
+
+  .ecova-footer-link:hover,
+  .ecova-footer-social:hover,
+  .ecova-footer-social:hover svg {
+    transform: none;
+  }
 }
