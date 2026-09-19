@@ -1,207 +1,219 @@
-♻️ ECOVA Frontend
+# ♻️ ECOVA Frontend
 
-Eco Collection, Value & Action
-Turn Waste Into Value.
+<p align="center">
+  <strong>Eco Collection, Value & Action</strong><br />
+  <em>Turn Waste Into Value.</em>
+</p>
 
-ECOVA Frontend adalah antarmuka web untuk ECOVA, aplikasi Bank
-Sampah Digital & Daur Ulang (Eco-Waste Management). Aplikasi membantu
-nasabah mengajukan penyetoran sampah, memantau transaksi, memperoleh
-poin setelah hasil timbang diverifikasi admin, dan menukarkan poin
-dengan hadiah.
+---
 
-Frontend ini merupakan bagian dari Uji Kompetensi Keahlian (UKK) RPL
-2026/2027 --- SMK Telkom Malang. ECOVA menggunakan arsitektur frontend
-dan backend terpisah; frontend berkomunikasi dengan ECOVA Backend
-melalui REST API.
+## 🌱 About ECOVA
 
-🌱 About ECOVA
+**ECOVA Frontend** adalah antarmuka web untuk **ECOVA (Eco Collection, Value & Action)**, sebuah aplikasi **Bank Sampah Digital & Daur Ulang (Eco-Waste Management)**.
 
-ECOVA merupakan singkatan dari Eco Collection, Value & Action.
+ECOVA membantu nasabah mengajukan penyetoran sampah, memantau transaksi, memperoleh poin berdasarkan hasil timbang yang telah diverifikasi Admin, serta menukarkan poin dengan berbagai hadiah yang tersedia.
 
-Aplikasi memiliki dua role utama:
+Frontend ini merupakan bagian dari project **Uji Kompetensi Keahlian (UKK) RPL 2026/2027 — SMK Telkom Malang**.
 
-Nasabah --- mengajukan setoran, memantau transaksi dan poin,
-melihat katalog hadiah, melakukan penukaran poin, serta mengelola
-profil.
+ECOVA menggunakan arsitektur **frontend dan backend terpisah**. Frontend dibangun menggunakan **Next.js** dan berkomunikasi dengan **ECOVA Backend** melalui REST API.
 
-Admin Bank Sampah --- mengelola nasabah, kategori sampah,
-setoran dan verifikasi timbang, jadwal penjemputan, hadiah,
-penukaran poin, serta rekapitulasi.
+### Eco Collection, Value & Action
 
-Frontend menangani interaksi pengguna dan komunikasi API. Backend tetap
-menjadi source of truth untuk data transaksi, hasil timbang
-terverifikasi, dan perhitungan poin final.
+Nama **ECOVA** menggambarkan tiga proses utama aplikasi:
 
-✨ Key Features
+- **Eco Collection** — mengumpulkan dan mengelola sampah yang dapat didaur ulang.
+- **Value** — mengubah sampah menjadi nilai berupa poin.
+- **Action** — mendorong aksi nyata dalam menjaga lingkungan.
 
-Nasabah
+Frontend menangani interaksi pengguna dan komunikasi dengan API, sedangkan **backend tetap menjadi source of truth** untuk data transaksi, hasil timbang terverifikasi, saldo poin, dan perhitungan poin final.
 
-Dashboard saldo poin dan ringkasan transaksi
+---
 
-Pengajuan setoran sampah multi-item
+## ✨ Key Features
 
-Metode setoran Antar dan Jemput
+ECOVA memiliki dua role utama, yaitu **Nasabah** dan **Admin Bank Sampah**.
 
-Pemilihan jadwal dan alamat penjemputan
+### 👤 Nasabah
 
-Riwayat serta status setoran
+Nasabah dapat:
 
-Nota setoran dan rekap setoran bulanan
+- Melihat dashboard saldo poin dan ringkasan transaksi.
+- Mengajukan penyetoran sampah secara multi-item.
+- Memilih metode setoran **Antar** atau **Jemput**.
+- Memilih jadwal penjemputan.
+- Memasukkan alamat penjemputan.
+- Melihat riwayat dan status setoran.
+- Melihat detail dan nota transaksi setoran.
+- Melihat rekap setoran berdasarkan bulan.
+- Melihat katalog hadiah.
+- Menukarkan poin dengan hadiah.
+- Melihat riwayat penukaran poin.
+- Melihat nota transaksi penukaran.
+- Mengelola profil Nasabah.
 
-Katalog hadiah
+### 🛠️ Admin Bank Sampah
 
-Penukaran poin dan riwayat penukaran
+Admin dapat:
 
-Nota penukaran untuk transaksi selesai
+- Melihat dashboard statistik Bank Sampah.
+- Melihat aktivitas setoran dan penukaran.
+- Mengelola data Nasabah.
+- Mengelola kategori sampah.
+- Mengelola transaksi setoran.
+- Mengonfirmasi pengajuan setoran.
+- Melakukan verifikasi hasil timbang.
+- Mengelola jadwal penjemputan.
+- Mengelola hadiah.
+- Mengelola transaksi penukaran poin.
+- Melihat rekapitulasi bulanan.
+- Mengelola profil dan informasi unit Bank Sampah.
 
-Profil nasabah
+---
 
-Admin Bank Sampah
+## 👥 User Roles
 
-Dashboard statistik Bank Sampah
+| Role | Description |
+| --- | --- |
+| **Nasabah** | Mengajukan setoran, memantau transaksi, melihat saldo poin, menukar poin dengan hadiah, dan mengelola profil. |
+| **Admin Bank Sampah** | Mengelola Nasabah, kategori sampah, setoran, hasil timbang, jadwal penjemputan, hadiah, penukaran poin, dan rekapitulasi. |
 
-Grafik aktivitas setoran dan penukaran
+---
 
-Management data nasabah
+## 🛠️ Tech Stack
 
-Management kategori sampah
+| Technology | Usage |
+| --- | --- |
+| **Next.js** | Frontend framework dan App Router |
+| **React** | Component-based user interface |
+| **TypeScript** | Typed application development |
+| **Tailwind CSS** | Styling antarmuka |
+| **Lucide React** | Icon library |
+| **REST API** | Integrasi dengan ECOVA Backend |
+| **JWT / Bearer Token** | Autentikasi request terproteksi |
 
-Management setoran dan verifikasi hasil timbang
+---
 
-Management jadwal penjemputan
+## 🔄 Application Flow
 
-Management hadiah
+### ♻️ Waste Deposit Flow
 
-Management penukaran poin
+Nasabah memasukkan estimasi berat sampah ketika membuat pengajuan.
 
-Rekapitulasi bulanan
+Setelah sampah diterima, Admin melakukan verifikasi dan memasukkan hasil timbang aktual. Backend kemudian menghitung ulang poin berdasarkan hasil timbang yang telah diverifikasi.
 
-Profil admin/informasi unit Bank Sampah
-
-Sidebar admin yang dapat di-collapse
-
-👥 User Roles
-
-Role                                Description
-
-Nasabah                         Mengajukan setoran, memantau
-transaksi, melihat saldo poin,
-menukar poin, dan mengelola profil.
-
-🛠️ Tech Stack
-
-Technology               Usage
-
-Next.js              Framework frontend dan App Router
-React                Component-based user interface
-TypeScript           Typed application code
-Tailwind CSS         Styling antarmuka
-Lucide React         Ikon antarmuka
-REST API             Integrasi dengan ECOVA Backend
-JWT / Bearer Token   Autentikasi request terproteksi
-
-🔄 Application Flow
-
-Flow Setoran Sampah
-
+```text
 Nasabah Mengajukan Setoran
-        ↓
-belum_dikonfirmasi
-        ↓
-Admin Konfirmasi
-        ↓
-diproses
-        ↓
+            ↓
+   belum_dikonfirmasi
+            ↓
+      Admin Konfirmasi
+            ↓
+        diproses
+            ↓
 Admin Verifikasi Hasil Timbang
-        ↓
-Backend Menghitung Poin Final
-        ↓
-selesai
-        ↓
-Poin Masuk ke Saldo Nasabah
+            ↓
+ Backend Menghitung Poin Final
+            ↓
+         selesai
+            ↓
+ Poin Masuk ke Saldo Nasabah
+```
 
-Berat yang dimasukkan nasabah saat pengajuan merupakan estimasi.
-Admin kemudian memverifikasi berat aktual. Perhitungan poin final
-dilakukan oleh backend berdasarkan data transaksi yang telah
-diverifikasi; frontend bukan sumber perhitungan final.
+Berat yang dimasukkan Nasabah merupakan **estimasi awal**, sedangkan berat hasil verifikasi Admin digunakan untuk menentukan poin final.
 
-Metode Setor
+Frontend dapat menampilkan preview perhitungan, tetapi **backend tetap menjadi sumber perhitungan dan data final**.
 
-♻️ Antar
+---
 
-Nasabah membawa sampah langsung ke unit Bank Sampah ECOVA.
+## 🚚 Deposit Methods
 
-🚚 Jemput
+ECOVA mendukung dua metode penyetoran sampah.
 
-Nasabah memilih jadwal penjemputan yang tersedia dan memasukkan alamat
-penjemputan saat mengajukan setoran.
+### 🏦 Antar
 
-Tracking penjemputan berbeda dari status transaksi setoran:
+Nasabah membawa sampah secara langsung ke unit Bank Sampah ECOVA.
 
+Nasabah dapat melihat informasi operasional seperti:
+
+- Nama unit Bank Sampah
+- Alamat
+- Nomor telepon
+- Hari operasional
+- Jam buka
+- Jam tutup
+
+### 🚚 Jemput
+
+Nasabah dapat meminta sampah dijemput dengan:
+
+1. Memilih jadwal penjemputan yang tersedia.
+2. Memasukkan alamat penjemputan.
+3. Mengajukan setoran.
+4. Memantau proses penjemputan.
+
+Tracking penjemputan:
+
+```text
 menunggu
-↓
+    ↓
 menuju_lokasi
-↓
+    ↓
 sudah_diambil
-↓
+    ↓
 selesai
+```
 
-Status penjemputan menggambarkan proses pengambilan sampah, sedangkan
-status setoran menggambarkan proses konfirmasi, verifikasi timbang, dan
-penyelesaian transaksi.
+> **Catatan:** status penjemputan berbeda dengan status transaksi setoran. Status penjemputan menunjukkan proses pengambilan sampah, sedangkan status setoran menunjukkan proses konfirmasi, verifikasi timbang, dan penyelesaian transaksi.
 
-🗺️ Pages / Routes
+---
 
-Route                         Role                    Description
+## 🗺️ Pages & Routes
 
-/                           Public                  Landing page ECOVA
+### Public
 
-/login                      Public                  Login Nasabah/Admin
+| Route | Description |
+| --- | --- |
+| `/` | Landing page ECOVA |
+| `/login` | Login Nasabah dan Admin |
+| `/register` | Registrasi Nasabah |
 
-/register                   Public                  Registrasi Nasabah
+### Nasabah
 
-/nasabah/dashboard          Nasabah                 Dashboard dan ringkasan
-akun
+| Route | Description |
+| --- | --- |
+| `/nasabah/dashboard` | Dashboard dan ringkasan akun |
+| `/nasabah/setor` | Pengajuan setor sampah |
+| `/nasabah/riwayat` | Riwayat, status, nota, dan rekap setoran |
+| `/nasabah/hadiah` | Katalog hadiah |
+| `/nasabah/penukaran` | Penukaran poin dan riwayat penukaran |
+| `/nasabah/profile` | Profil Nasabah |
 
-/nasabah/setor              Nasabah                 Pengajuan setor sampah
+### Admin Bank Sampah
 
-/nasabah/riwayat            Nasabah                 Riwayat, status, nota,
-dan rekap setoran
+| Route | Description |
+| --- | --- |
+| `/admin/dashboard` | Dashboard Bank Sampah |
+| `/admin/users` | Management data Nasabah |
+| `/admin/kategori` | Management kategori sampah |
+| `/admin/setoran` | Management dan verifikasi setoran |
+| `/admin/jadwal-penjemputan` | Management jadwal penjemputan |
+| `/admin/hadiah` | Management hadiah |
+| `/admin/penukaran` | Management transaksi penukaran poin |
+| `/admin/rekap` | Rekapitulasi bulanan |
+| `/admin/profile` | Profil dan informasi unit Bank Sampah |
 
-/nasabah/hadiah             Nasabah                 Katalog hadiah
+---
 
-/nasabah/penukaran          Nasabah                 Penukaran poin dan
-riwayat penukaran
+## 📁 Project Structure
 
-/nasabah/profile            Nasabah                 Profil nasabah
-
-/admin/dashboard            Admin                   Dashboard Bank Sampah
-
-/admin/users                Admin                   Management nasabah
-
-/admin/kategori             Admin                   Management kategori
-sampah
-
-/admin/setoran              Admin                   Management dan
-verifikasi setoran
-
-/admin/jadwal-penjemputan   Admin                   Management jadwal
-penjemputan
-
-/admin/hadiah               Admin                   Management hadiah
-
-/admin/penukaran            Admin                   Management penukaran
-poin
-
-/admin/rekap                Admin                   Rekapitulasi bulanan
-
-📁 Project Structure
-
+```text
 ecova-frontend/
+│
 ├── app/
 │   ├── (auth)/
 │   │   ├── login/
 │   │   └── register/
+│   │
 │   ├── admin/
 │   │   ├── dashboard/
 │   │   ├── users/
@@ -212,6 +224,7 @@ ecova-frontend/
 │   │   ├── penukaran/
 │   │   ├── rekap/
 │   │   └── profile/
+│   │
 │   ├── nasabah/
 │   │   ├── dashboard/
 │   │   ├── setor/
@@ -219,152 +232,238 @@ ecova-frontend/
 │   │   ├── hadiah/
 │   │   ├── penukaran/
 │   │   └── profile/
+│   │
 │   ├── globals.css
 │   ├── layout.tsx
 │   └── page.tsx
+│
 ├── components/
 │   ├── admin/
 │   ├── nasabah/
 │   ├── landing/
 │   └── ui/
+│
 ├── lib/
 ├── public/
 │   └── images/
+│
 ├── package.json
 └── README.md
+```
 
-Folder hasil build, dependency terinstal, dan file environment lokal
-tidak ditampilkan.
+Folder hasil build, dependency yang telah terinstal, dan environment lokal tidak disimpan di repository.
 
-🔌 Backend Integration
+---
 
-ECOVA Frontend terintegrasi dengan ECOVA Backend REST API yang
-dikelola pada repository terpisah.
+## 🔌 Backend Integration
 
-Frontend Development : http://localhost:3001
-Backend Development  : http://localhost:3000
+ECOVA Frontend terintegrasi dengan **ECOVA Backend REST API** yang dikelola pada repository terpisah.
 
-Request ke endpoint terproteksi menggunakan:
+### Development URLs
 
+```text
+Frontend : http://localhost:3001
+Backend  : http://localhost:3000
+```
+
+Request ke endpoint yang membutuhkan autentikasi menggunakan JWT Bearer Token:
+
+```text
 Authorization: Bearer <access_token>
+```
 
-Pada flow autentikasi client-side yang diimplementasikan, access token
-dan informasi user disimpan di localStorage. Ketika request
-menghasilkan status unauthorized, data autentikasi dibersihkan dan
-pengguna diarahkan kembali ke halaman login.
+Pada flow autentikasi client-side, access token dan informasi user digunakan untuk mempertahankan sesi pengguna dan melakukan request ke endpoint protected.
 
-Path gambar backend seperti /uploads/... diselesaikan menggunakan base
-URL backend sebelum ditampilkan.
+Jika autentikasi tidak valid atau session berakhir, pengguna diarahkan kembali ke halaman login.
 
-Jangan pernah menyimpan JWT asli, password, DATABASE_URL, API
-secret, atau credential lain di repository frontend.
+Path gambar dari backend seperti:
 
-🔐 Authentication & Authorization
+```text
+/uploads/...
+```
 
-Role aplikasi yang digunakan frontend:
+diselesaikan menggunakan base URL backend sebelum ditampilkan pada frontend.
 
+> Jangan menyimpan JWT asli, password, `DATABASE_URL`, API secret, atau credential lainnya di repository frontend.
+
+---
+
+## 🔐 Authentication & Authorization
+
+Role yang digunakan ECOVA:
+
+```text
 nasabah
 admin_bank
+```
 
 Redirect setelah login:
 
-nasabah    → /nasabah/dashboard
-admin_bank → /admin/dashboard
+```text
+nasabah
+→ /nasabah/dashboard
 
-Frontend mengirim JWT melalui Bearer token untuk request yang
-membutuhkan autentikasi. Validasi akses dan otorisasi final tetap
-menjadi tanggung jawab backend.
+admin_bank
+→ /admin/dashboard
+```
 
-⚙️ Environment Variables
+Frontend menggunakan role pengguna untuk menentukan navigasi dan halaman yang sesuai.
 
-Base URL REST API dikonfigurasi melalui environment variable Next.js:
+Validasi keamanan dan otorisasi final tetap dilakukan oleh **ECOVA Backend**.
 
+---
+
+## ⚙️ Environment Variables
+
+Base URL ECOVA Backend dapat dikonfigurasi melalui environment variable Next.js:
+
+```env
 NEXT_PUBLIC_API_URL=http://localhost:3000
+```
 
-Simpan file .env secara lokal dan jangan commit credential atau
-secret.
+Buat file `.env` atau `.env.local` pada environment development sesuai konfigurasi project.
 
-NEXT_PUBLIC_ berarti nilainya dapat digunakan pada
-browser/client-side. Karena itu, variabel tersebut hanya digunakan untuk
-base URL API publik dan bukan untuk password, JWT secret, database
-URL, atau private API key.
+> File environment lokal tidak boleh di-commit apabila berisi informasi sensitif.
 
-📦 Installation
+Karena variable dengan prefix `NEXT_PUBLIC_` dapat digunakan di browser, variable tersebut **tidak boleh digunakan untuk menyimpan password, JWT secret, database URL, atau private API key**.
 
-Pastikan Node.js, npm, dan ECOVA Backend tersedia.
+---
 
+## 📦 Installation
+
+### 1. Clone Repository
+
+```bash
 git clone <frontend-repository-url>
+```
+
+Masuk ke directory project:
+
+```bash
 cd ecova-frontend
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
+```
 
-Siapkan .env:
+### 3. Configure Environment
 
+Buat konfigurasi environment:
+
+```env
 NEXT_PUBLIC_API_URL=http://localhost:3000
+```
 
-💻 Running Development Server
+Pastikan **ECOVA Backend** juga sudah dikonfigurasi dan berjalan.
 
+---
+
+## 💻 Running Development Server
+
+Jalankan:
+
+```bash
 npm run dev
+```
 
-Buka:
+Frontend dapat diakses melalui:
 
+```text
 http://localhost:3001
+```
 
-Backend development harus berjalan secara terpisah pada:
+Sedangkan backend berjalan secara terpisah pada:
 
+```text
 http://localhost:3000
+```
 
-🚀 Build for Production
+---
 
+## 🚀 Build for Production
+
+Build aplikasi:
+
+```bash
 npm run build
+```
+
+Kemudian jalankan production server:
+
+```bash
 npm run start
+```
 
-Untuk deployment, ubah NEXT_PUBLIC_API_URL pada environment hosting
-agar mengarah ke ECOVA Backend yang sudah di-deploy.
+Untuk deployment, sesuaikan:
 
-🔗 Related Repository
+```env
+NEXT_PUBLIC_API_URL=<deployed-backend-url>
+```
+
+dengan URL ECOVA Backend yang telah di-deploy.
+
+---
+
+## 🔗 Related Repository
 
 ECOVA menggunakan arsitektur frontend dan backend terpisah.
 
-Frontend: repository ini
+- **Frontend:** Repository ini
+- **Backend:** `ECOVA-backend`
 
-Backend: ECOVA
-Backend
+Backend ECOVA dikembangkan menggunakan **NestJS, TypeScript, Prisma ORM, dan PostgreSQL/Supabase** serta menyediakan REST API yang digunakan oleh frontend.
 
-Backend ECOVA dibuat menggunakan NestJS, Prisma, dan
-PostgreSQL/Supabase serta menyediakan REST API yang digunakan
-frontend.
+---
 
-🖼️ Screenshots
+## 🖼️ Screenshots
 
-Screenshots of the ECOVA interface will be added here.
+Screenshots tampilan ECOVA dapat ditambahkan pada bagian ini setelah dokumentasi visual project tersedia.
 
-👩‍💻 Developer
+Contoh halaman yang dapat didokumentasikan:
 
-Aveline Voleta Wardani
-Software Engineering Student
+- Landing Page
+- Login & Register
+- Nasabah Dashboard
+- Pengajuan Setoran
+- Riwayat Setoran
+- Katalog Hadiah
+- Admin Dashboard
+- Management Setoran
+- Rekapitulasi
+
+---
+
+## 📚 Project Information
+
+| Information | Detail |
+| --- | --- |
+| **Project Name** | ECOVA |
+| **Full Name** | Eco Collection, Value & Action |
+| **Tagline** | Turn Waste Into Value. |
+| **Category** | Digital Waste Bank / Eco-Waste Management |
+| **Frontend Architecture** | Next.js App Router |
+| **API Architecture** | REST API |
+| **Authentication** | JWT Bearer Authentication |
+| **Project Type** | Uji Kompetensi Keahlian RPL 2026/2027 |
+| **School** | SMK Telkom Malang |
+
+---
+
+## 👩‍💻 Developer
+
+**Aveline Voleta Wardani**  
+Software Engineering Student  
 SMK Telkom Malang
 
-Project:
-Uji Kompetensi Keahlian RPL 2026/2027
+**Project:** Uji Kompetensi Keahlian RPL 2026/2027
 
-📚 Project Information
-
-Information                 Detail
-
-Project Name            ECOVA
-Full Name               Eco Collection, Value & Action
-Tagline                 Turn Waste Into Value.
-Category                Digital Waste Bank / Eco-Waste Management
-Frontend Architecture   Next.js App Router
-API Architecture        REST API
-Authentication          JWT Bearer Authentication
-Project Type            Uji Kompetensi Keahlian RPL 2026/2027
-School                  SMK Telkom Malang
+---
 
 <p align="center">
-
-<strong>{=html}ECOVA --- Eco Collection, Value &
-Action</strong>{=html}<br />{=html} <em>{=html}Turn Waste Into
-Value.</em>{=html}
-
+  <strong>♻️ ECOVA — Eco Collection, Value & Action</strong>
+  <br />
+  <em>Turn Waste Into Value.</em>
 </p>
